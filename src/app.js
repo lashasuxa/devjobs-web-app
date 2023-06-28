@@ -1,27 +1,20 @@
+import bodyParser from "body-parser";
 import express from "express";
+import cors from "cors";
 import connect from "./database/mongo.js";
 import dotenv from "dotenv";
-import {
-  getAllProject,
-  getWebProject,
-} from "./controllers/project-controller.js";
-import bodyParser from "body-parser";
-import cors from "cors";
 import swaggerMiddleware from "./middlewares/swagger-middleware.js";
 
-dotenv.config();
-connect();
+import { getList } from "./routes/DevJobRoutes.js";
 
+dotenv.config();
 const app = express();
-app.use(bodyParser.json());
+connect();
 app.use(cors());
 
-// app.get("/", (req, res) => {
-//   return res.status(200).json({ message: "app works fine" });
-// });
+app.use(bodyParser.json());
 
-app.get("/api/projects", getAllProject);
-app.get("/api/projects/web", getWebProject);
+app.use("/getdevjobs", getList);
 app.use("/", ...swaggerMiddleware());
 
 app.listen(3000);

@@ -1,11 +1,11 @@
-import Project from "../models/Project.js";
+import jobPosting from "../models/devjobs.js";
 
-export const getAllProject = async (req, res) => {
+export const getAllJob = async (req, res) => {
   const data = await Project.find();
 
   return res.status(200).json(data);
 };
-export const getWebProject = async (req, res) => {
+export const getJobs = async (req, res) => {
   const data = await Project.find({ category: "web" });
 
   return res.status(200).json(data);

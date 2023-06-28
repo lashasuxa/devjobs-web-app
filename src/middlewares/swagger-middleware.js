@@ -3,11 +3,11 @@ import YAML from "yamljs";
 
 const swaggerMiddleware = () => {
   const options = {
-    customCss: ".swagger-ui .topbar (display:none)",
-    customSiteTitle: "Devjob",
+    customCss: ".swagger-ui .topbar { display: none }",
+    customSiteTitle: "DevJobs",
   };
 
-  const swaggerDocument = YAML.load("./src/config/swagger.yaml");
+  const swaggerDocument = YAML.load("./src/database/swagger.yaml");
   return [SwaggerUI.serve, SwaggerUI.setup(swaggerDocument, options)];
 };
 

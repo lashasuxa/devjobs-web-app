@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: DevJobs
+  description: DevJobs api
+  version: 0.1.9
+
+paths:
+  /getdevjobs/{size}/{page}:
+    get:
+      parameters:
+        - name: size
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: page
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successfully fetched
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
