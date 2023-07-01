@@ -1,5 +1,6 @@
-import { Schema, model } from "mongoose";
+import { Schema, SchemaTypes, model } from "mongoose";
 
+const { Number, String } = Schema.Types;
 const jobPostingSchema = new Schema({
   id: { type: Number, required: true },
   company: { type: String, required: true },
@@ -25,3 +26,8 @@ const jobPostingSchema = new Schema({
 const jobPosting = model("JobPosting", jobPostingSchema);
 
 export default jobPosting;
+
+// conmany:{
+//   type:Schema.Types.String
+//   required:true
+// }
